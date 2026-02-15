@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZ Search 설정</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      max-width: 560px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    h1 { font-size: 1.25rem; margin-bottom: 1rem; }
+    label { display: block; margin-top: 12px; font-weight: 500; }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    .hint { font-size: 0.85rem; color: #666; margin-top: 4px; }
+    .row { margin-top: 8px; display: flex; gap: 8px; align-items: center; }
+    .row input { flex: 1; }
+    button {
+      margin-top: 16px;
+      padding: 8px 16px;
+      background: #1a73e8;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background: #1557b0; }
+    #replacesList { margin-top: 8px; }
+    .replace-item { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+    .replace-item input { flex: 1; padding: 6px 8px; }
+    .replace-item button { margin: 0; padding: 4px 10px; font-size: 0.9rem; }
+    .add-replace { margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>EZ Search 설정</h1>
+
+  <label for="searchUrlTemplate">검색 URL 템플릿</label>
+  <input type="text" id="searchUrlTemplate" placeholder="https://www.google.com/search?q={query}">
+  <p class="hint">검색어가 들어갈 자리에 반드시 <code>{query}</code> 를 넣어 주세요.</p>
+
+  <label for="openMode">열기 방식</label>
+  <select id="openMode">
+    <option value="new_tab">새 탭에서 열기</option>
+    <option value="new_window">새 창에서 열기</option>
+  </select>
+
+  <fieldset style="margin-top: 20px; padding: 12px;">
+    <legend>문자열 변환 규칙</legend>
+
+    <label>
+      <input type="checkbox" id="trim" checked> 앞뒤 공백 제거
+    </label>
+    <label>
+      <input type="checkbox" id="lowercase"> 소문자로 변환
+    </label>
+
+    <label for="prefix">접두사 (예: site:stackoverflow.com )</label>
+    <input type="text" id="prefix" placeholder="">
+
+    <label for="suffix">접미사</label>
+    <input type="text" id="suffix" placeholder="">
+
+    <label>정규식 치환 (패턴 → 치환 문자열)</label>
+    <div id="replacesList"></div>
+    <button type="button" class="add-replace" id="addReplace">규칙 추가</button>
+  </fieldset>
+
+  <button type="button" id="save">저장</button>
+  <span id="status" style="margin-left: 12px; color: #0d0;"></span>
+
+  <script src="options.js"></script>
+</body>
+</html>

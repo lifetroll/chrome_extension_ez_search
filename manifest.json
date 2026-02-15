@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "EZ Search",
+  "description": "선택한 텍스트를 사용자 지정 사이트와 규칙으로 검색하는 컨텍스트 메뉴 확장.",
+  "version": "0.1.0",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html"
+}
